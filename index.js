@@ -1,6 +1,5 @@
 import "./style.scss";
 
-const DEBUG = true;
 const initiallyChecked = [1, 1, 0, 0, 0, 1];
 
 const board = document.getElementById("board");
@@ -17,5 +16,5 @@ function createInput(index, isChecked) {
 }
 
 document
-  .getElementById("r5")
+  .querySelector("input:last-child")
   .addEventListener("change", () => alert("success!"));
