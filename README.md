@@ -8,7 +8,7 @@ You'll just need to push the blue square to win. No hacking!
 
 You can play the game in the url:
 
-http://jehna.github.io/puzzle-game-1/
+https://jehna.github.io/puzzle-game-1/
 
 It's free to play!
 
