@@ -1,6 +1,14 @@
 import "./style.scss";
 
-const initiallyChecked = [1, 1, 0, 0, 0, 1];
+const initiallyChecked = [1, 1, 0, 1, 1, 0];
+// 1, 1
+// 0, 0, 0
+// 0, 0, 1
+// 1, 0,  , 1
+// 1, 0,  , 0
+// 0, 0, 0,  , 1
+// 0, 0, 0,  , 0
+// 1, 1, 1, 1, 0, 0
 
 const board = document.getElementById("board");
 for (let i = 0; i < initiallyChecked.length; i++)

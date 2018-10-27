@@ -1,6 +1,6 @@
 #board {
   display: flex;
-  width: 100px;
+  width: 150px;
   flex-wrap: wrap;
 }
 
@@ -29,26 +29,41 @@ input:last-child {
 }
 
 %nope {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-@mixin latch($id1, $id2, $id3) {
+@mixin nor($id1, $id2, $id3) {
   #r#{$id1}:checked~#r#{$id3},
-  #r#{$id1}:not(:checked)~#r#{$id2}:checked~#r#{$id3},
-  #r#{$id1}:not(:checked)~#r#{$id2}:not(:checked) {
+  #r#{$id1}:not(:checked)~#r#{$id2}:checked~#r#{$id3} {
     @extend %nope;
   }
 }
 
-@mixin i-latch($id1, $id2, $id3) {
+@mixin and($id1, $id2, $id3) {
   #r#{$id1}:not(:checked)~#r#{$id3},
-  #r#{$id1}:checked~#r#{$id2}:not(:checked)~#r#{$id3},
-  #r#{$id1}:checked~#r#{$id2}:checked {
+  #r#{$id1}:checked~#r#{$id2}:not(:checked)~#r#{$id3} {
     @extend %nope;
   }
 }
 
-@include latch(0,1,2);
-@include i-latch(1,2,4);
-@include i-latch(0,3,4);
-@include i-latch(3,4,5);
+@mixin left($id1, $id2, $id3) {
+  #r#{$id1}:not(:checked)~#r#{$id3},
+  #r#{$id1}:checked~#r#{$id2}:checked~#r#{$id3} {
+    @extend %nope;
+  }
+}
+
+@mixin right($id1, $id2, $id3) {
+  #r#{$id1}:checked~#r#{$id3},
+  #r#{$id1}:not(:checked)~#r#{$id2}:not(:checked)~#r#{$id3} {
+    @extend %nope;
+  }
+}
+
+@include nor(0,1,2);
+@include and(0,2,3);
+@include nor(2,3,4);
+@include and(0,1,5);
+@include and(2,3,5);
+
